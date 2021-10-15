@@ -1,5 +1,6 @@
 {
   "name": "topfunction/topfunction",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Administrator\\Topfunction\\": "src/"
