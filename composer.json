@@ -1,9 +1,10 @@
 {
   "name": "topfunction/topfunction",
+  "description": "topfunction",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Administrator\\Topfunction\\": "src/"
+      "Topfunction\\Topfunction\\": "src/"
     }
   },
   "authors": [
@@ -12,5 +13,8 @@
       "email": "164589895@qq.com"
     }
   ],
-  "require": {}
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6"
+  }
 }
