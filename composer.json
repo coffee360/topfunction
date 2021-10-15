@@ -1,0 +1,15 @@
+{
+  "name": "topfunction/topfunction",
+  "autoload": {
+    "psr-4": {
+      "Administrator\\Topfunction\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "coffee",
+      "email": "164589895@qq.com"
+    }
+  ],
+  "require": {}
+}
