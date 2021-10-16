@@ -55,7 +55,7 @@ class ExcelOut
                 $objSheet->getColumnDimension($col)
                     ->setWidth(30);
 
-                $objSheet->setCellValue($col . ($k + 1), " " . (new String())->removeEmoji($v2));
+                $objSheet->setCellValue($col . ($k + 1), " " . (new StringApp())->removeEmoji($v2));
 
                 $newExcel->getActiveSheet()
                     ->getStyle($col . ($k + 1))

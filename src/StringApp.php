@@ -7,7 +7,7 @@ namespace Topfunction\Topfunction;
  * Class String
  * @package Topfunction\Topfunction
  */
-class String
+class StringApp
 {
 
     /**

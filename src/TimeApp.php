@@ -7,7 +7,7 @@ namespace Topfunction\Topfunction;
  * Class Time
  * @package Topfunction\Topfunction
  */
-class Time
+class TimeApp
 {
 
 

@@ -7,7 +7,7 @@ namespace Topfunction\Topfunction;
  * Class Number
  * @package Topfunction\Topfunction
  */
-class Number
+class NumberApp
 {
 
     /**
