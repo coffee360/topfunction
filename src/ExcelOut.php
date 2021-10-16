@@ -27,15 +27,19 @@ class ExcelOut
     }
 
 
-    private function getStyleArray($horizontal = Alignment::HORIZONTAL_CENTER, $vertical = Alignment::VERTICAL_CENTER)
+    /**
+     * 样式——对齐
+     * @return array[]
+     */
+    private function getAlignment()
     {
         return [
             'alignment' => [
                 //水平居中
-                'horizontal' => $horizontal,
+                'horizontal' => $horizontal = Alignment::HORIZONTAL_CENTER,
 
                 //垂直居中
-                'vertical'   => $vertical,
+                'vertical'   => $vertical = Alignment::VERTICAL_CENTER,
             ],
         ];
     }
@@ -96,7 +100,7 @@ class ExcelOut
 
                 $newExcel->getActiveSheet()
                     ->getStyle($col . ($k + 1))
-                    ->applyFromArray($this->getStyleArray());
+                    ->applyFromArray($this->getAlignment());
             }
         }
 
