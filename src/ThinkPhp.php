@@ -17,7 +17,7 @@ class ThinkPhp
      * @param array $append
      * @return array
      */
-    public function getListPage($app, $param = [], $append = [])
+    public function getList($app, $param = [], $append = [])
     {
         $row  = $param['row'] ?? 20;
         $curr = $param['curr'] ?? 1;
