@@ -5,6 +5,7 @@ namespace Topfunction\Topfunction;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 /**
  * ExcelOut
@@ -102,6 +103,18 @@ class ExcelOut
 
                 $objSheet->getColumnDimension($col)
                     ->setWidth(30);
+
+                if (!empty($this->head) && empty($k)) {
+                    $objSheet->getStyle($col . ($k + 1))
+                        ->getFont()
+                        ->setBold(true); //字体加粗
+
+                    $objSheet->getStyle($col . ($k + 1))
+                        ->getFill()
+                        ->setFillType(Fill::FILL_SOLID)
+                        ->getStartColor()
+                        ->setARGB('FF808080');
+                }
 
                 $objSheet->setCellValue($col . ($k + 1), " " . (new StringApp())->removeEmoji($v2));
 
