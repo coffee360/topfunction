@@ -31,15 +31,22 @@ class ExcelOut
      * 样式——对齐
      * @return array[]
      */
-    private function getAlignment()
+    private function getStyleAlignment($horizontal = 2)
     {
+        $horizontal_name = Alignment::HORIZONTAL_CENTER;
+        if (1 == $horizontal) {
+            $horizontal_name = Alignment::HORIZONTAL_LEFT;
+        } elseif (3 == $horizontal) {
+            $horizontal_name = Alignment::HORIZONTAL_RIGHT;
+        }
+
         return [
             'alignment' => [
                 //水平居中
-                'horizontal' => $horizontal = Alignment::HORIZONTAL_CENTER,
+                'horizontal' => $horizontal_name,
 
                 //垂直居中
-                'vertical'   => $vertical = Alignment::VERTICAL_CENTER,
+                'vertical'   => Alignment::VERTICAL_CENTER,
             ],
         ];
     }
@@ -98,9 +105,14 @@ class ExcelOut
 
                 $objSheet->setCellValue($col . ($k + 1), " " . (new StringApp())->removeEmoji($v2));
 
+                // 数字右对齐
+                $style_alignment = $this->getStyleAlignment();
+                if (is_numeric($v2)) {
+                    $style_alignment = $this->getStyleAlignment(3);
+                }
                 $newExcel->getActiveSheet()
                     ->getStyle($col . ($k + 1))
-                    ->applyFromArray($this->getAlignment());
+                    ->applyFromArray($style_alignment);
             }
         }
 
