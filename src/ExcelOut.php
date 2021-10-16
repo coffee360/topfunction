@@ -55,6 +55,7 @@ class ExcelOut
 
     /**
      * 保存
+     * @return array
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
     public function save()
