@@ -13,8 +13,8 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
  */
 class ExcelOut
 {
-    public $file  = '文件名';       // 文件名
-    public $title = '表名';        // 表名
+    public $file  = '';          // 文件名
+    public $title = '';          // 表名
     public $head  = [];          // 表头
     public $list  = [];          // 数据
 
@@ -47,6 +47,20 @@ class ExcelOut
      */
     public function save()
     {
+        if (empty($this->file)) {
+            return [
+                'errcode' => 1,
+                'errmsg'  => 'file不能为空',
+            ];
+        }
+
+        if (empty($this->title)) {
+            return [
+                'errcode' => 1,
+                'errmsg'  => 'title不能为空',
+            ];
+        }
+
         $newExcel = new Spreadsheet();            //创建一个新的excel文档
         $objSheet = $newExcel->getActiveSheet();  //获取当前操作sheet的对象
         $objSheet->setTitle($this->title);        //设置当前sheet的标题
