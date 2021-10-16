@@ -12,6 +12,9 @@ class Number
 
     /**
      * 整型转两位小数
+     * @param      $num
+     * @param bool $chu_100_is
+     * @return string
      */
     function num2point($num, $chu_100_is = false)
     {

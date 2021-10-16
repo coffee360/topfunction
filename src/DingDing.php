@@ -10,16 +10,16 @@ namespace Topfunction\Topfunction;
 class DingDing
 {
 
-    public $url   = "";
-    public $title = "";
-    public $debug = true;
+    public $url   = "";     // 请求的url
+    public $title = "";     // 标题
+    public $debug = true;   // 调试
 
 
     /**
-     *
-     * @param array  $data
-     * @param string $msgtype text  link markdown actionCard
-     * @return boolean
+     * 发送
+     * @param        $message
+     * @param string $msgtype
+     * @return array|bool|string
      */
     public function send($message, $msgtype = 'text')
     {
@@ -69,6 +69,12 @@ class DingDing
     }
 
 
+    /**
+     * 请求
+     * @param $remote_server
+     * @param $post_string
+     * @return bool|string
+     */
     private function request_by_curl($remote_server, $post_string)
     {
         $ch = curl_init();
@@ -78,6 +84,7 @@ class DingDing
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json;charset=utf-8']);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
         // 线下环境不用开启curl证书验证, 未调通情况可尝试添加该代码
         if ($this->debug) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
