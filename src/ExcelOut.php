@@ -4,6 +4,7 @@ namespace Topfunction\Topfunction;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 /**
  * ExcelOut
@@ -16,6 +17,28 @@ class ExcelOut
     public $title = '表名';        // 表名
     public $head  = [];          // 表头
     public $list  = [];          // 数据
+
+
+    public function __construct()
+    {
+        // 设置php超时时间及内存
+        set_time_limit(0);
+        ini_set('memory_limit', '1024M');
+    }
+
+
+    private function getStyleArray($horizontal = Alignment::HORIZONTAL_CENTER, $vertical = Alignment::VERTICAL_CENTER)
+    {
+        return [
+            'alignment' => [
+                //水平居中
+                'horizontal' => $horizontal,
+
+                //垂直居中
+                'vertical'   => $vertical,
+            ],
+        ];
+    }
 
 
     /**
@@ -59,7 +82,7 @@ class ExcelOut
 
                 $newExcel->getActiveSheet()
                     ->getStyle($col . ($k + 1))
-                    ->applyFromArray($this->styleArray_left);
+                    ->applyFromArray($this->getStyleArray());
             }
         }
 
